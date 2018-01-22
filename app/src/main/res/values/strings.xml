@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OmnifyAsses</string>
+    <string name="gen_ran">Random Number</string>
+    <string name="sort">Sorting</string>
+</resources>
