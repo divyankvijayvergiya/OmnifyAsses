@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.SortingActivity"></activity>
+        <service android:name=".SortServices"></service>
     </application>
 
 </manifest>

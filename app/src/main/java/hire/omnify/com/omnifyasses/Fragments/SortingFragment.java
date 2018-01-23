@@ -1,5 +1,6 @@
 package hire.omnify.com.omnifyasses.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +17,7 @@ import java.util.Random;
 import hire.omnify.com.omnifyasses.Adapters.MergeSortAdapter;
 import hire.omnify.com.omnifyasses.Adapters.QuickSortAdapter;
 import hire.omnify.com.omnifyasses.R;
+import hire.omnify.com.omnifyasses.SortServices;
 
 /**
  * Created by Dell on 20-01-2018.
@@ -25,6 +28,7 @@ public class SortingFragment extends Fragment {
     MergeSortAdapter mergeSortAdapter;
     ArrayList<Integer> arrayList;
     QuickSortAdapter quickSortAdapter;
+    Button start;
 
 
     @Nullable
@@ -33,15 +37,27 @@ public class SortingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sorting, container, false);
         quick = view.findViewById(R.id.recycler_view_quick);
         merge = view.findViewById(R.id.recycler_view_merge);
+        start = view.findViewById(R.id.start);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getContext());
         quick.setLayoutManager(layoutManager);
         merge.setLayoutManager(layoutManager1);
         mergeSortFun(view);
         quickSortFun(view);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SortServices.class);
+                getActivity().startService(intent);
+            }
+        });
+
+
 
         return view;
     }
+
 
     public void mergeSortFun(View v) {
         arrayList = new ArrayList<>();
@@ -199,4 +215,6 @@ public class SortingFragment extends Fragment {
 
         return list;
     }
+
+
 }
